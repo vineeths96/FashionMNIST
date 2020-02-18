@@ -3,11 +3,11 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
 
-def MLNN_model_test(X_test, Y_test):
-    output_file = open('multi-layer-net.txt', 'w')
+def CNN_model_test(X_test, Y_test):
+    output_file = open('convolution-neural-net.txt', 'w')
 
     try:
-        model = tf.keras.models.load_model('./model/MLNN.h5')
+        model = tf.keras.models.load_model('./model/CNN.h5')
     except:
         print("Trained model does not exist. Please train the model.\n")
         exit()
@@ -26,4 +26,3 @@ def MLNN_model_test(X_test, Y_test):
 
 if __name__ == "__main__":
     model_test()
-
