@@ -13,7 +13,9 @@ from CNN.model_parameters import *
 
 def CNN_model_train(X_train, Y_train):
     INPUT_SHAPE = X_train.shape[1:]
+
     X_train = (X_train - np.mean(X_train)) / np.std(X_train)
+
     datagen = ImageDataGenerator(rotation_range=0, zoom_range=0.01, width_shift_range=0.025, \
                                  height_shift_range=0.025, shear_range=0.01, validation_split=VALIDATION_SPLIT)
     datagen.fit(X_train)
@@ -23,15 +25,9 @@ def CNN_model_train(X_train, Y_train):
     model.add(Conv2D(NUM_FILTERS_1, kernel_size=KERNAL_SIZE_1, kernel_initializer= glorot_normal(), input_shape=INPUT_SHAPE, padding='same'))
     model.add(BatchNormalization(axis=1))
     model.add(LeakyReLU(alpha=ALPHA))
-    model.add(Conv2D(NUM_FILTERS_1, kernel_size=KERNAL_SIZE_1, kernel_initializer= glorot_normal(), input_shape=INPUT_SHAPE, padding='same'))
-    model.add(BatchNormalization(axis=1))
-    model.add(LeakyReLU(alpha=ALPHA))
     model.add(MaxPool2D(POOL_SIZE_1, padding='same'))
     model.add(Dropout(DROPOUT))
 
-    model.add(Conv2D(NUM_FILTERS_2, kernel_size=KERNAL_SIZE_2, kernel_initializer= glorot_normal(), input_shape=INPUT_SHAPE, padding='same'))
-    model.add(BatchNormalization(axis=1))
-    model.add(LeakyReLU(alpha=ALPHA))
     model.add(Conv2D(NUM_FILTERS_2, kernel_size=KERNAL_SIZE_2, kernel_initializer= glorot_normal(), input_shape=INPUT_SHAPE, padding='same'))
     model.add(BatchNormalization(axis=1))
     model.add(LeakyReLU(alpha=ALPHA))
@@ -39,9 +35,6 @@ def CNN_model_train(X_train, Y_train):
     model.add(Dropout(DROPOUT))
 
     model.add(Conv2D(NUM_FILTERS_2, kernel_size=KERNAL_SIZE_2, kernal_initialiser= glorot_normal(), input_shape=INPUT_SHAPE, padding='same'))
-    model.add(BatchNormalization(axis=1))
-    model.add(LeakyReLU(alpha=ALPHA))
-    model.add(Conv2D(NUM_FILTERS_2, kernel_size=KERNAL_SIZE_2, kernel_initialiser= glorot_normal(), input_shape=INPUT_SHAPE, padding='same'))
     model.add(BatchNormalization(axis=1))
     model.add(LeakyReLU(alpha=ALPHA))
     model.add(MaxPool2D(POOL_SIZE_2, STRIDE, padding='same'))
