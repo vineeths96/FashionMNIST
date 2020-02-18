@@ -12,9 +12,9 @@ def MLNN_model_train(X_train, Y_train):
     model = Sequential()
     model.add(Flatten(input_shape=INPUT_SHAPE))
     model.add(Dense(NUM_HIDDEN_1, activation='relu'))
-    model.add(Dropout(0.2))
+    model.add(Dropout(DROPOUT))
     model.add(Dense(NUM_HIDDEN_2, activation='relu'))
-    model.add(Dropout(0.2))
+    model.add(Dropout(DROPOUT))
 
     model.add(Dense(CATEGORIES, activation='softmax'))
 

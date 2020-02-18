@@ -1,10 +1,13 @@
 import os
+import numpy as np
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
 
 def CNN_model_test(X_test, Y_test):
     output_file = open('convolution-neural-net.txt', 'w')
+
+    X_test = (X_test - np.mean(X_test))/np.std(X_test)
 
     try:
         model = tf.keras.models.load_model('./model/CNN.h5')
