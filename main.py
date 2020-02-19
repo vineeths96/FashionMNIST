@@ -12,5 +12,5 @@ model_test(X_test, Y_test)
 """
 
 X_train, Y_train, X_test, Y_test = CNN_load_data()
-#CNN_model_train(X_train, Y_train)
+CNN_model_train(X_train, Y_train)
 CNN_model_test(X_test, Y_test)
