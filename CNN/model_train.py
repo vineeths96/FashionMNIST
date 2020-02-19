@@ -1,5 +1,4 @@
 import os
-import numpy as np
 
 os.environ['TF_XPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -7,12 +6,11 @@ from tensorflow.keras.callbacks import ReduceLROnPlateau
 from tensorflow.keras.optimizers import RMSprop
 
 from CNN.create_model import create_model
-from CNN.plot import plot
 from CNN.model_parameters import *
+from analytics.plot import plot
 
 def CNN_model_train(X_train, Y_train):
     INPUT_SHAPE = X_train.shape[1:]
-    #X_train = (X_train - np.mean(X_train)) / np.std(X_train)
 
     datagen = ImageDataGenerator(zoom_range=0.01, width_shift_range=0.025, height_shift_range=0.025, shear_range=0.01,\
                                  validation_split=VALIDATION_SPLIT, fill_mode='nearest')
@@ -30,9 +28,10 @@ def CNN_model_train(X_train, Y_train):
 
     model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     history = model.fit(train_data_generated, steps_per_epoch=STEPS_EPOCH, epochs=TRAINING_EPOCHS,\
-                        validation_data=validation_data_generated, validation_steps=STEPS_VALIDATION, callbacks=[learning_rate_reduction])
+                        validation_data=validation_data_generated, validation_steps=STEPS_VALIDATION,\
+                        callbacks=[learning_rate_reduction])
 
-    plot(history)
+    plot(history, "CNN")
 
     # Try to create model directory
     try:

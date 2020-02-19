@@ -28,7 +28,7 @@ def create_model(INPUT_SHAPE):
 
     model.add(Flatten())
     model.add(Dense(NUM_DENSE_1, activation='relu'))
-    model.add(BatchNormalization(axis=1))
+    #model.add(BatchNormalization(axis=1))
     model.add(Dropout(DROPOUT))
     model.add(Dense(NUM_DENSE_2, activation='relu'))
     model.add(Dense(CATEGORIES, activation='softmax'))
@@ -36,3 +36,6 @@ def create_model(INPUT_SHAPE):
     model.summary()
 
     return model
+
+if __name__ == "__main__":
+    create_model()
