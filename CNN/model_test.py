@@ -41,7 +41,7 @@ def CNN_model_test(X_test, Y_test, network):
 
     sns.heatmap(pd.DataFrame(classification_rep).iloc[:-1, :].T, annot=True)
     plt.savefig('./results/' + network + '_classification_report.png')
-    plt.show()
+    #plt.show()
 
 
 if __name__ == "__main__":
