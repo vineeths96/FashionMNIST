@@ -1,3 +1,4 @@
+# Model hyperparameters
 PIXELS = 28
 
 NUM_FILTERS_1 = 32

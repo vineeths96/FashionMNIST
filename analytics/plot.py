@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+# Plot training performance
 def plot(history, network):
     # Plot training & validation accuracy values
     plt.plot(history.history['accuracy'])

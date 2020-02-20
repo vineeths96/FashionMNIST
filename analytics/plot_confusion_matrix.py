@@ -2,11 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import itertools
 
+# Plots the confusion matrix using scikit-learns confusion matrix
+# This function snippet was obtained from stackoverflow and wsa modified
 def plot_confusion_matrix(cm, network, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
+    plt.figure()
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()

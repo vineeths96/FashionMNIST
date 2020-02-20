@@ -5,12 +5,15 @@ import tensorflow as tf
 
 from CNN.model_parameters import *
 
+# Loads FashionMNIST data
 def CNN_load_data():
     (X_train, Y_train), (X_test, Y_test) = tf.keras.datasets.fashion_mnist.load_data()
 
+    # Feature scaling to 1
     X_train = X_train.astype('float32')/255
     X_test = X_test.astype('float32')/255
 
+    # Converting to 4D tensors
     X_train = X_train.reshape(X_train.shape[0], PIXELS, PIXELS, 1)
     X_test = X_test.reshape(X_test.shape[0], PIXELS, PIXELS, 1)
 
