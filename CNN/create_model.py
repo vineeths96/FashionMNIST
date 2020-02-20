@@ -33,6 +33,7 @@ def create_model(INPUT_SHAPE):
     model.add(Dense(NUM_DENSE_2, activation='relu'))
     model.add(Dense(CATEGORIES, activation='softmax'))
 
+
     model.summary()
 
     return model

@@ -27,7 +27,7 @@ def MLNN_model_train(X_train, Y_train):
     STEPS_VALIDATION = int(STEPS_EPOCH * VALIDATION_SPLIT)
 
     # Set the optimiser values
-    optimizer = RMSprop(lr=0.002, rho=0.9, epsilon=1e-08, decay=0.0)
+    optimizer = RMSprop(lr=LEARNING_RATE, rho=RHO, epsilon=EPISLON, decay=DECAY)
     learning_rate_reduction = ReduceLROnPlateau(monitor='val_accuracy', patience=3, verbose=1, factor=0.5,
                                                 min_lr=0.00001)
 
